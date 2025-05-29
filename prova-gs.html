@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AgriTech Startup - Inovação para o campo</title>
+  <link rel="stylesheet" href="landing-page.css">
+</head>
+<body>
+  <header>
+    <div class="logo">AgroTechVision</div>
+    <nav>
+      <a href="#features">Recursos</a>
+      <a href="#about">Sobre</a>
+      <a href="#contact">Contato</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" aria-label="Introdução">
+      <h1>Transformando a Agricultura com Tecnologia de Ponta</h1>
+      <p>Inove, economize recursos e amplie a produtividade do campo com nossas soluções inteligentes e sustentáveis.</p>
+      <button class="btn-primary" id="cta-button">Quero saber mais</button>
+    </section>
+
+    <section class="features" id="features" aria-label="Recursos principais">
+      <div class="feature-card" tabindex="0">
+        <h3>Monitoramento Inteligente</h3>
+        <p>Acompanhamento em tempo real das condições do solo, clima e plantações com sensores IoT integrados.</p>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <h3>Gestão Automatizada</h3>
+        <p>Controle e otimização do uso de água, fertilizantes e insumos, reduzindo custos e impacto ambiental.</p>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <h3>Análises e Previsões</h3>
+        <p>Plataforma analítica que utiliza inteligência artificial para prever safras e identificar riscos.</p>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-label="Sobre a startup">
+      <h2>Quem Somos</h2>
+      <p>Somos uma startup dedicada a trazer inovação tecnológica para o setor agrícola, 
+      promovendo sustentabilidade, eficiência e lucratividade por meio de soluções digitais avançadas que conectam o campo ao futuro.</p>
+    </section>
+
+    <section class="contact" id="contact" aria-label="Formulário de contato para newsletter">
+      <h2>Receba Novidades</h2>
+      <form id="newsletter-form" aria-label="Inscrição para newsletter">
+        <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required aria-required="true" />
+        <button type="submit">Inscrever-se</button>
+      </form>
+      <div id="form-message" role="alert" aria-live="polite" style="margin-top: 1rem; text-align:center;"></div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 AgriTech Startup. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    document.getElementById('cta-button').addEventListener('click', () => {
+      document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    const form = document.getElementById('newsletter-form');
+    const formMessage = document.getElementById('form-message');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = form.email.value.trim();
+
+      if (!emailInput || !validateEmail(emailInput)) {
+        formMessage.textContent = 'Por favor, insira um e-mail válido.';
+        formMessage.style.color = 'red';
+        return;
+      }
+
+      formMessage.textContent = 'Obrigado por se inscrever! Em breve, novidades no seu e-mail.';
+      formMessage.style.color = 'var(--green)';
+      form.reset();
+    });
+
+    function validateEmail(email) {
+      const re = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      return re.test(email.toLowerCase());
+    }
+  </script>
+</body>
+</html>
+
